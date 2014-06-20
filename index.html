@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Checkout.shoo by Dev-Dipesh</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Checkout.shoo</h1>
+        <h2></h2>
+        <a href="https://github.com/Dev-Dipesh/checkout.shoo" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
+<a name="project-checkoutshoo---complete-code-description-process-desc---httpdev-dipeshgithubioproject-checkoutshoo" class="anchor" href="#project-checkoutshoo---complete-code-description-process-desc---httpdev-dipeshgithubioproject-checkoutshoo"><span class="octicon octicon-link"></span></a>Project-Checkout.Shoo - Complete Code Description (Process Desc. - <a href="http://dev-dipesh.github.io/Project-Checkout.Shoo/">http://dev-dipesh.github.io/Project-Checkout.Shoo/</a>)</h2>
+
+<p>Checkout.Shoo is a project of wordpress, which integrates Paypal, EasyPay, MailJet and GetResponse APIs. Also with some code implementation in function.php for Gravity Form for automatic form pre-population and some JSON and PHP multi array implementation. Here is the complete code descricption for all of it's important code blocks.</p>
+
+<h4>
+<a name="contents" class="anchor" href="#contents"><span class="octicon octicon-link"></span></a>Contents</h4>
+
+<ol>
+<li>
+<p><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#easypay--mailjet--getresponse--paypal">EasyPay | Mailjet | GetResponse | Paypal</a></p>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#easypay">EasyPay</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#mailjet">Mailjet</a></li>
+<li>
+<a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#getresponse">GetResponse</a>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#official-code-for-add_contact">Official Code for add_contact()</a></li>
+<li>
+<a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#add_autoresponder">A tip: add_autoresponder()</a>
+0.<a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#paypal">PayPal</a>
+</li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#description-of-paypal-url-parameters-used-here-">Description of Paypal URL Parameters used here</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#gravity-form-form-pre-population-code-for-functionphp-filename---functionphp">Gravity Form form Pre-Population code for function.php (Filename - function.php)</a></p>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#php-product-file">PHP PRODUCT FILE</a></li>
+</ol>
+</li>
+<li>
+<p><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#file-for-thank-you-page-redirection-json-style-filename---productjs">File for Thank you page redirection JSON Style (Filename - product.js)</a></p>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#file-for-accessing-and-processing-these-values-filename-processjs">File for accessing and processing these values (filename: process.js)</a></li>
+</ol>
+</li>
+<li>
+<p><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#description-of-all-other-files">Description of all other files</a></p>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#easypay-1">EasyPay</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#getresponse-1">GetResponse</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#mailjet-1">Mailjet</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#gravity-form">Gravity Form</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#error-log">Error Log</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/README.md#thank-you-page-processing">Thank you page processing</a></li>
+</ol>
+</li>
+</ol><h2>
+<a name="easypay--mailjet--getresponse--paypal" class="anchor" href="#easypay--mailjet--getresponse--paypal"><span class="octicon octicon-link"></span></a>EasyPay | Mailjet | GetResponse | Paypal</h2>
+
+<p><strong>(File Name: EasypayCreatePaymentReferenceExample.php)</strong></p>
+
+<h3>
+<a name="easypay" class="anchor" href="#easypay"><span class="octicon octicon-link"></span></a>EASYPAY</h3>
+
+<p><strong>(Line 28 - 203)</strong></p>
+
+<div class="highlight highlight-php"><pre><span class="c1">//Including Core Configuration files of EasyPay</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s1">'api/Easypay.php'</span><span class="p">);</span>
+
+<span class="c1">//Defininf mandatory and optional parameters</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'user'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'JDSM230412'</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'cin'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'2313'</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'entity'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'10611'</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$first_name</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'description'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$item_name</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'observation'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$srt</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'mobile'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$email</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'value'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+<span class="nv">$easypay_params</span><span class="p">[</span><span class="s1">'key'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$t_key</span><span class="p">;</span>
+
+<span class="cm">/*</span>
+<span class="cm">* Create a new Easypay Object</span>
+<span class="cm">* @var Easypay</span>
+<span class="cm">*/</span>
+
+<span class="nv">$easypay</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Easypay</span><span class="p">(</span><span class="nv">$easypay_params</span><span class="p">);</span>
+
+<span class="c1">//set mode to either test or production.</span>
+<span class="c1">//This can be defined in the config file, here commented as already defined in config file</span>
+<span class="c1">//$easypay-&gt;set_live(false);</span>
+
+<span class="c1">//Creating reference object</span>
+<span class="nv">$reference</span> <span class="o">=</span> <span class="nv">$easypay</span><span class="o">-&gt;</span><span class="na">createReference</span><span class="p">();</span>
+
+<span class="c1">//Fetching all relevant values using refference object</span>
+<span class="nv">$r_code</span> <span class="o">=</span> <span class="nv">$reference</span><span class="p">[</span><span class="s1">'ep_reference'</span><span class="p">];</span>
+<span class="nv">$v_value</span> <span class="o">=</span> <span class="nv">$reference</span><span class="p">[</span><span class="s1">'ep_value'</span><span class="p">];</span>
+<span class="nv">$link</span> <span class="o">=</span> <span class="nv">$reference</span><span class="p">[</span><span class="s1">'ep_link'</span><span class="p">];</span>
+<span class="nv">$pg_mb_entidade</span> <span class="o">=</span> <span class="nv">$reference</span><span class="p">[</span><span class="s1">'ep_entity'</span><span class="p">];</span>
+</pre></div>
+
+<h3>
+<a name="mailjet" class="anchor" href="#mailjet"><span class="octicon octicon-link"></span></a>Mailjet</h3>
+
+<p><strong>(Line 321 - 333)</strong></p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span><span class="s1">'From'</span> <span class="o">=&gt;</span> <span class="s1">'sim@shoo.pt'</span><span class="p">,</span> <span class="s1">'Subject'</span> <span class="o">=&gt;</span> <span class="s1">'Direct Bank Transfer'</span><span class="p">);</span>
+
+           <span class="nv">$smtp</span> <span class="o">=</span> <span class="nx">Mail</span><span class="o">::</span><span class="na">factory</span><span class="p">(</span><span class="s1">'smtp'</span><span class="p">,</span>
+                          <span class="k">array</span> <span class="p">(</span><span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'ssl://in.mailjet.com'</span><span class="p">,</span>
+                                 <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="mi">465</span><span class="p">,</span>
+                                 <span class="s1">'auth'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                                 <span class="s1">'username'</span> <span class="o">=&gt;</span> <span class="s1">'YOUR USERNAME KEY HERE'</span><span class="p">,</span>
+                                 <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">'YOUR PASSWORD HERE FROM YOUR ACCOUNT SETTINGS'</span><span class="p">));</span>
+
+          <span class="nv">$body</span> <span class="o">=</span> <span class="s2">"MESSAGE TO SENT"</span><span class="p">;</span>
+          <span class="nv">$mail</span> <span class="o">=</span> <span class="nv">$smtp</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+          <span class="k">echo</span> <span class="s2">"Mail"</span><span class="p">;</span>
+</pre></div>
+
+<h3>
+<a name="getresponse" class="anchor" href="#getresponse"><span class="octicon octicon-link"></span></a>GetResponse</h3>
+
+<p><strong>(Line 89 - 196)</strong></p>
+
+<div class="highlight highlight-php"><pre><span class="c1">//GET RESPONSE EASYPAY</span>
+            <span class="c1"># Demonstrates how to add new contact to campaign.</span>
+
+            <span class="c1"># JSON::RPC module is required</span>
+            <span class="c1"># available at https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/jsonRPCClient.php</span>
+            <span class="k">require_once</span> <span class="s1">'jsonRPCClient.php'</span><span class="p">;</span>
+
+            <span class="c1"># your API key is available at</span>
+            <span class="c1"># https://app.getresponse.com/my_api_key.html</span>
+            <span class="nv">$api_key</span> <span class="o">=</span> <span class="s1">'513a258c58e1ac047aa11d310a6899bd'</span><span class="p">;</span>
+
+            <span class="c1"># API 2.x URL</span>
+            <span class="nv">$api_url</span> <span class="o">=</span> <span class="s1">'http://api2.getresponse.com'</span><span class="p">;</span>
+
+            <span class="c1"># initialize JSON-RPC client</span>
+            <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">jsonRPCClient</span><span class="p">(</span><span class="nv">$api_url</span><span class="p">);</span>
+
+            <span class="c1"># find campaign named 'pg_mb'</span>
+            <span class="nv">$campaigns</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">get_campaigns</span><span class="p">(</span>
+                <span class="nv">$api_key</span><span class="p">,</span>
+                <span class="k">array</span> <span class="p">(</span>
+                    <span class="c1"># find by name literally</span>
+                    <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">'EQUALS'</span> <span class="o">=&gt;</span> <span class="s1">'pg_mb'</span> <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">);</span>
+
+            <span class="c1"># null values will create problem in execution and parse request syntax error, which is sometimes hard</span>
+            <span class="c1"># to figure out immediately, so take an extra caution for them</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$address2</span> <span class="o">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$address2</span> <span class="o">=</span> <span class="s2">"none"</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1"># uncomment following line to preview Response</span>
+            <span class="c1"># print_r($campaigns);</span>
+
+            <span class="c1"># because there can be only one campaign of this name</span>
+            <span class="c1"># first key is the CAMPAIGN_ID required by next method</span>
+            <span class="c1"># (this ID is constant and should be cached for future use)</span>
+            <span class="nv">$CAMPAIGN_ID</span> <span class="o">=</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nb">array_keys</span><span class="p">(</span><span class="nv">$campaigns</span><span class="p">));</span>
+            <span class="c1">#echo $CAMPAIGN_ID;</span>
+
+            <span class="c1"># add contact to the campaign</span>
+            <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">add_contact</span><span class="p">(</span>
+                <span class="nv">$api_key</span><span class="p">,</span>
+                <span class="k">array</span> <span class="p">(</span>
+                    <span class="c1"># identifier of 'test' campaign</span>
+                    <span class="s1">'campaign'</span>  <span class="o">=&gt;</span> <span class="nv">$CAMPAIGN_ID</span><span class="p">,</span>
+
+                    <span class="c1"># basic info</span>
+                    <span class="s1">'name'</span>      <span class="o">=&gt;</span> <span class="nv">$first_name</span><span class="p">,</span>
+                    <span class="s1">'email'</span>     <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
+                    <span class="s1">'cycle_day'</span> <span class="o">=&gt;</span> <span class="s1">'0'</span><span class="p">,</span> <span class="c1">// This is important as it's not even mentioned in official code below,</span>
+
+                    <span class="c1"># custom fields</span>
+                    <span class="s1">'customs'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'pg_mb_entidade'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$pg_mb_entidade</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'pg_mb_referencia'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$pg_mb_referencia</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'pg_quantia'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$v_value</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'pg_product_id'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$item_name</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'pg_modalidade'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$srt</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'Apelido'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$last_name</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'Phone'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$phone</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'Address'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$address1</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'Moradalinha2'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$address2</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'City'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$city</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'State'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$state</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'ZipPostal'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$zip</span>
+                        <span class="p">),</span>
+                        <span class="k">array</span><span class="p">(</span>
+                            <span class="s1">'name'</span>       <span class="o">=&gt;</span> <span class="s1">'Country'</span><span class="p">,</span>
+                            <span class="s1">'content'</span>    <span class="o">=&gt;</span> <span class="nv">$country</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="official-code-for-add_contact" class="anchor" href="#official-code-for-add_contact"><span class="octicon octicon-link"></span></a>Official Code for add_contact()</h4>
+
+<p><code>'cycle_day' =&gt; '0'</code> is important to remember as when you call getresponse from it's API it won't add your campaign directly to autoresponder cycle, so you have to do it yourself. Here is the official code for adding contacts.</p>
+
+<div class="highlight highlight-json"><pre><span class="p">[</span> 
+        <span class="s2">"API_KEY"</span><span class="p">,</span> 
+        <span class="p">{</span> 
+            <span class="nt">"campaign"</span>  <span class="p">:</span> <span class="s2">"CAMPAIGN_ID"</span><span class="p">,</span> 
+            <span class="nt">"name"</span>      <span class="p">:</span> <span class="s2">"name_value"</span><span class="p">,</span> 
+            <span class="nt">"email"</span>     <span class="p">:</span> <span class="s2">"email_value"</span><span class="p">,</span> 
+            <span class="nt">"cycle_day"</span> <span class="p">:</span> <span class="err">cycle_day_value</span><span class="p">,</span> 
+            <span class="nt">"ip"</span>        <span class="p">:</span> <span class="s2">"ip_value"</span><span class="p">,</span> 
+            <span class="nt">"customs"</span>   <span class="p">:</span> <span class="p">[</span> 
+                <span class="p">{</span> 
+                    <span class="nt">"name"</span>      <span class="p">:</span> <span class="s2">"name_1_value"</span><span class="p">,</span> 
+                    <span class="nt">"content"</span>   <span class="p">:</span> 
+<span class="s2">"content_1_value"</span> 
+                <span class="p">},</span> 
+                <span class="p">{</span> 
+                    <span class="nt">"name"</span>      <span class="p">:</span> <span class="s2">"name_2_value"</span><span class="p">,</span> 
+                    <span class="nt">"content"</span>   <span class="p">:</span> 
+<span class="s2">"content_2_value"</span> 
+                <span class="p">}</span> 
+            <span class="p">]</span> 
+
+</pre></div>
+
+<p>A tip, if you want to create your autoresponder cycle first using API, then here is it's official code and code in PHP.</p>
+
+<h4>
+<a name="add_autoresponder" class="anchor" href="#add_autoresponder"><span class="octicon octicon-link"></span></a>add_autoresponder()</h4>
+
+<div class="highlight highlight-json"><pre><span class="p">[</span>
+        <span class="s2">"API_KEY"</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="nt">"campaign"</span>          <span class="p">:</span> <span class="s2">"CAMPAIGN_ID"</span><span class="p">,</span>
+            <span class="nt">"from_field"</span>        <span class="p">:</span> <span class="s2">"FROM_FIELD_ID"</span><span class="p">,</span>
+            <span class="nt">"reply_to_field"</span>    <span class="p">:</span> <span class="s2">"FROM_FIELD_ID"</span><span class="p">,</span>
+            <span class="nt">"subject"</span>   <span class="p">:</span> <span class="s2">"My autoresponder"</span><span class="p">,</span>
+            <span class="nt">"name"</span>      <span class="p">:</span> <span class="s2">"Say hi"</span><span class="p">,</span>
+            <span class="nt">"contents"</span>  <span class="p">:</span> <span class="p">{</span>
+                <span class="nt">"plain"</span> <span class="p">:</span> <span class="s2">"Hello there"</span><span class="p">,</span>
+                <span class="nt">"html"</span>  <span class="p">:</span> <span class="s2">"&lt;h1&gt;Hello&lt;/h1&gt;there"</span>
+            <span class="p">},</span>
+            <span class="nt">"attachments"</span> <span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                <span class="nt">"data"</span> <span class="p">:</span> <span class="s2">"WmHFvMOzxYLEhyBnxJnFm2zEhSBqYcW6xYQu=="</span><span class="p">,</span>
+                <span class="nt">"name"</span> <span class="p">:</span> <span class="s2">"order.txt"</span><span class="p">,</span>
+                <span class="nt">"mime"</span> <span class="p">:</span> <span class="s2">"application/txt"</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                <span class="nt">"data"</span> <span class="p">:</span> <span class="s2">"QWxhLGtvdA=="</span><span class="p">,</span>
+                <span class="nt">"name"</span> <span class="p">:</span> <span class="s2">"people.csv"</span><span class="p">,</span>
+                <span class="nt">"mime"</span> <span class="p">:</span> <span class="s2">"application/csv"</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+            <span class="nt">"flags"</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">"clicktrack"</span><span class="p">,</span> <span class="s2">"openrate"</span> <span class="p">],</span>
+            <span class="nt">"day_of_cycle"</span> <span class="p">:</span> <span class="mi">32</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+
+<div class="highlight highlight-php"><pre><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">add_autoresponder</span><span class="p">(</span>
+    <span class="nv">$api_key</span><span class="p">,</span>
+    <span class="k">array</span> <span class="p">(</span>
+        <span class="c1"># identifier of 'test' campaign</span>
+        <span class="s1">'campaign'</span>  <span class="o">=&gt;</span> <span class="nv">$CAMPAIGN_ID</span><span class="p">,</span>
+
+        <span class="c1"># mail details</span>
+        <span class="s1">'subject'</span>      <span class="o">=&gt;</span> <span class="s2">"My autoresponder"</span><span class="p">,</span>
+        <span class="s1">'name'</span>     <span class="o">=&gt;</span> <span class="s2">"Say hi"</span><span class="p">,</span>
+
+        <span class="c1"># custom fields</span>
+        <span class="s2">"contents"</span>  <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s2">"plain"</span> <span class="o">=&gt;</span> <span class="s2">"Hello there"</span><span class="p">,</span>
+                <span class="s2">"html"</span>  <span class="o">=&gt;</span> <span class="s2">"&lt;h1&gt;Hello&lt;/h1&gt;there"</span>
+            <span class="p">),</span>
+            <span class="s2">"flags"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"openrate"</span> <span class="p">],</span>
+            <span class="s2">"day_of_cycle"</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="paypal" class="anchor" href="#paypal"><span class="octicon octicon-link"></span></a>PayPal</h3>
+
+<p><strong>(Line 30 - 363)</strong></p>
+
+<p>First of all as this is a subscription form, so here I've defined the the code for srt parameter of paypal, below is details of all of the used parameters of paypal.</p>
+
+<div class="highlight highlight-php"><pre><span class="c1">// Code for multiple subscription</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$m2</span> <span class="o">!=</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$srt</span> <span class="o">=</span> <span class="nv">$m1</span><span class="p">;</span>
+                <span class="nv">$srt</span><span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s2">"/[x]/i"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="nv">$srt</span><span class="p">);</span> <span class="c1">// To replace 'x' from 1x 2x 3x....nx</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$srt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+</pre></div>
+
+<p>Code for paypal URL, here check the PHP function <code>urlencode()</code> we can not pass another url with parameters in base url as parameter, as then both urls prameters will conflict, that's why we have passed and encoded url to the paypal.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">if</span> <span class="p">(</span><span class="nv">$srt</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nb">header</span><span class="p">(</span><span class="s2">"Location: https://www.paypal.com/cgi-bin/webscr/?notify_url=https://checkout.shoo.pt/?page=gf_paypal_ipn&amp;charset=UTF-8&amp;currency_code=EUR&amp;business=jd@joaodiogomarques.com&amp;first_name=</span><span class="si">$first_name</span><span class="s2">&amp;last_name=</span><span class="si">$last_name</span><span class="s2">&amp;email=</span><span class="si">$email</span><span class="s2">&amp;address1=</span><span class="si">$address1</span><span class="s2">&amp;address2=</span><span class="si">$address2</span><span class="s2">&amp;city=</span><span class="si">$city</span><span class="s2">&amp;state=</span><span class="si">$state</span><span class="s2">&amp;zip=</span><span class="si">$zip</span><span class="s2">&amp;country=</span><span class="si">$country</span><span class="s2">&amp;cbt=Click here to continue&amp;cancel_return="</span><span class="o">.</span><span class="nb">urlencode</span><span class="p">(</span><span class="nv">$c_return</span><span class="p">)</span><span class="o">.</span><span class="s2">"&amp;no_note=1&amp;no_shipping=1&amp;return="</span><span class="o">.</span><span class="nb">urlencode</span><span class="p">(</span><span class="nv">$process_url</span><span class="p">)</span><span class="o">.</span><span class="s2">"&amp;cmd=_xclick-subscriptions&amp;item_name=CO shoo:</span><span class="si">$item_name</span><span class="s2">&amp;a3=</span><span class="si">$value</span><span class="s2">&amp;p3=1&amp;t3=M&amp;src=1&amp;srt=</span><span class="si">$srt</span><span class="s2">&amp;sra=1"</span><span class="p">);</span>
+                <span class="k">exit</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="nb">header</span><span class="p">(</span><span class="s2">"Location: https://www.paypal.com/cgi-bin/webscr/?notify_url=https://checkout.shoo.pt/?page=gf_paypal_ipn&amp;charset=UTF-8&amp;currency_code=EUR&amp;business=jd@joaodiogomarques.com&amp;first_name=</span><span class="si">$first_name</span><span class="s2">&amp;last_name=</span><span class="si">$last_name</span><span class="s2">&amp;email=</span><span class="si">$email</span><span class="s2">&amp;address1=</span><span class="si">$address1</span><span class="s2">&amp;address2=</span><span class="si">$address2</span><span class="s2">&amp;city=</span><span class="si">$city</span><span class="s2">&amp;state=</span><span class="si">$state</span><span class="s2">&amp;zip=</span><span class="si">$zip</span><span class="s2">&amp;country=</span><span class="si">$country</span><span class="s2">&amp;cbt=Click here to continue&amp;cancel_return="</span><span class="o">.</span><span class="nb">urlencode</span><span class="p">(</span><span class="nv">$c_return</span><span class="p">)</span><span class="o">.</span><span class="s2">"&amp;no_note=1&amp;no_shipping=1&amp;return="</span><span class="o">.</span><span class="nb">urlencode</span><span class="p">(</span><span class="nv">$process_url</span><span class="p">)</span><span class="o">.</span><span class="s2">"&amp;cmd=_xclick-subscriptions&amp;item_name=CO shoo:</span><span class="si">$item_name</span><span class="s2">&amp;a3=</span><span class="si">$value</span><span class="s2">&amp;p3=1&amp;t3=M&amp;sra=1"</span><span class="p">);</span>
+                <span class="k">exit</span><span class="p">;</span>
+            <span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="description-of-paypal-url-parameters-used-here-" class="anchor" href="#description-of-paypal-url-parameters-used-here-"><span class="octicon octicon-link"></span></a>Description of Paypal URL Parameters used here ()</h4>
+
+<p>(For complete description visit -  <a href="https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/">https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/</a>)</p>
+
+<ol>
+<li>
+<strong>notify_url=</strong> The URL to which PayPal posts information about the payment, in the form of Instant Payment Notification messages.</li>
+<li>
+<strong>charset=</strong> Sets the character set and character encoding for the billing information/log-in page on the PayPal website. In addition, this variable sets the same values for information that you send to PayPal in your HTML button code. The default is based on the language encoding settings in your Account Profile.</li>
+<li>
+<strong>currency_code=</strong> The currency of the payment. The default is USD. </li>
+<li>
+<strong>business=</strong> Your PayPal ID or an email address associated with your PayPal account. Email addresses must be confirmed.</li>
+<li>
+<strong>first_name=</strong> First name</li>
+<li>
+<strong>last_name=</strong> Last Name</li>
+<li>
+<strong>email=</strong> Email</li>
+<li>
+<strong>address1=</strong> Address Line 1</li>
+<li>
+<strong>address2=</strong> Address Line 2</li>
+<li>
+<strong>city=</strong> City</li>
+<li>
+<strong>state=</strong> State</li>
+<li>
+<strong>zip=</strong> Zip</li>
+<li>
+<strong>country=</strong> Country</li>
+<li>
+<strong>cbt=</strong> Sets the text for the Return to Merchant button on the PayPal Payment Complete page. For Business accounts, the return button displays your business name in place of the word "Merchant" by default. Currently set 'Click here to continue'</li>
+<li>
+<strong>cancel_return=</strong> A URL to which PayPal redirects the buyers' browsers if they cancel checkout before completing their payments. For example, specify a URL on your website that displays a "Payment Canceled" page.
+Default – PayPal redirects the browser to a PayPal webpage.</li>
+<li>
+<strong>no_note=</strong> Do not prompt buyers to include a note with their payments. Allowable values for Subscribe buttons:
+
+<ol>
+<li>– hide the text box and the prompt</li>
+</ol>
+</li>
+<li>
+<strong>no_shipping=</strong> Do not prompt buyers for a shipping address. Allowable values are: 
+
+<ol>
+<li>– prompt for an address, but do not require one</li>
+<li>– do not prompt for an address</li>
+<li>– prompt for an address, and require one
+The default is 0.</li>
+</ol>
+</li>
+<li>
+<strong>return=</strong> The URL to which PayPal redirects buyers' browser after they complete their payments. For example, specify a URL on your site that displays a "Thank you for your payment" page. 
+Default – PayPal redirects the browser to a PayPal webpage.</li>
+<li>
+<strong>cmd=</strong> Paypal button codes</li>
+<li>
+<strong>item_name=</strong> Here the name of the item is defined</li>
+<li>
+<strong>a3=</strong> Regular subscription price.</li>
+<li>
+<strong>p3=</strong> Subscription duration. Specify an integer value in the allowable range for the units of duration that you specify with t3.</li>
+<li>
+<strong>t3=</strong> Regular subscription units of duration.
+Allowable values are:
+
+<ol>
+<li>D – for days; allowable range for p3 is 1 to 90</li>
+<li>W – for weeks; allowable range for p3 is 1 to 52</li>
+<li>M – for months; allowable range for p3 is 1 to 24</li>
+<li>Y – for years; allowable range for p3 is 1 to 5</li>
+</ol>
+</li>
+<li>
+<strong>src=</strong> Recurring payments. Subscription payments recur unless subscribers cancel their subscriptions before the end of the current billing cycle or you limit the number of times that payments recur with the value that you specify for srt.
+Allowable values are:
+
+<ol>
+<li>0 – subscription payments do not recur</li>
+<li>1 – subscription payments recur
+The default is 0.</li>
+</ol>
+</li>
+<li>
+<strong>srt=</strong> Recurring times. Number of times that subscription payments recur. Specify an integer with a minimum value of 2 and a maximum value of 52. Valid only if you specify src="1".</li>
+<li>
+<strong>sra=</strong> Reattempt on failure. If a recurring payment fails, PayPal attempts to collect the payment two more times before cancelling the subscription.
+Allowable values are:
+
+<ol>
+<li>0 – do not reattempt failed recurring payments</li>
+<li>1 – reattempt failed recurring payments before cancelling
+The default is 1.</li>
+</ol>
+</li>
+</ol><h2>
+<a name="gravity-form-form-pre-population-code-for-functionphp-filename---functionphp" class="anchor" href="#gravity-form-form-pre-population-code-for-functionphp-filename---functionphp"><span class="octicon octicon-link"></span></a>Gravity Form form Pre-Population code for function.php (Filename - function.php)</h2>
+
+<p><strong>(Line 19 - 99)</strong></p>
+
+<div class="highlight highlight-php"><pre><span class="c1">//For Radio box field</span>
+<span class="c1">//NOTE: update the '4' to the ID of your form</span>
+<span class="nx">add_filter</span><span class="p">(</span><span class="s1">'gform_pre_render_4'</span><span class="p">,</span> <span class="s1">'payment'</span><span class="p">);</span>
+<span class="nx">add_filter</span><span class="p">(</span><span class="s2">"gform_pre_submission_filter_4"</span><span class="p">,</span> <span class="s2">"payment"</span><span class="p">);</span>
+
+<span class="k">function</span> <span class="nf">payment</span><span class="p">(</span><span class="nv">$form</span><span class="p">){</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="nv">$form</span><span class="p">[</span><span class="s1">'fields'</span><span class="p">]</span> <span class="k">as</span> <span class="o">&amp;</span><span class="nv">$field</span><span class="p">){</span>
+
+        <span class="c1">//NOTE: replace 19 with your radio box field id</span>
+        <span class="nv">$field_id</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$field</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">!=</span> <span class="nv">$field_id</span><span class="p">)</span>
+            <span class="k">continue</span><span class="p">;</span>
+  <span class="c1">//Including radio_products file for multi-dimensional array of products</span>
+    <span class="k">require</span><span class="p">(</span><span class="s1">'radio_products.php'</span><span class="p">);</span>        
+
+  <span class="c1">//Fetching current product name from the url</span>
+    <span class="nv">$product</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">'pname'</span><span class="p">]);</span>
+
+  <span class="c1">//Finding the index of array for current product from the above included file</span>
+    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nv">$i</span> <span class="o">&lt;=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$products</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$index</span> <span class="o">=</span> <span class="nv">$i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$product</span> <span class="o">==</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$index</span><span class="p">][</span><span class="s1">'pname'</span><span class="p">]){</span>
+            <span class="nv">$arr_index</span> <span class="o">=</span> <span class="nv">$index</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nv">$i</span> <span class="o">=</span> <span class="nv">$arr_index</span><span class="p">;</span>
+    <span class="nv">$select</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+  <span class="c1">//To enable price in gravity form field so as to calculate cost</span>
+    <span class="nv">$field</span><span class="p">[</span><span class="s1">'enablePrice'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">//For single product mode, i.e. 1x</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'text'</span><span class="p">],</span> <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value'</span><span class="p">],</span> <span class="s1">'price'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'price'</span><span class="p">],</span> <span class="s1">'isSelected'</span> <span class="o">=&gt;</span> <span class="nv">$select</span><span class="p">);</span>
+    <span class="p">}</span>
+
+  <span class="c1">//Any mode other than &gt;1x (2x 3x .... nx ... (n+1)x)</span>
+    <span class="k">else</span><span class="p">{</span>
+        <span class="nv">$choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'text1'</span><span class="p">],</span> <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value1'</span><span class="p">],</span> <span class="s1">'price'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'price1'</span><span class="p">]);</span>  
+        <span class="nv">$choices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'text2'</span><span class="p">],</span> <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value1'</span><span class="p">],</span> <span class="s1">'price'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'price2'</span><span class="p">],</span> <span class="s1">'isSelected'</span> <span class="o">=&gt;</span> <span class="nv">$select</span><span class="p">);</span>
+    <span class="p">}</span>
+        <span class="c1">//Pushing array value in the choices</span>
+        <span class="nv">$field</span><span class="p">[</span><span class="s1">'choices'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$choices</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$form</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// For Checkbox field</span>
+<span class="nx">add_filter</span><span class="p">(</span><span class="s1">'gform_pre_render_4'</span><span class="p">,</span> <span class="s1">'checkbox'</span><span class="p">);</span>
+<span class="nx">add_filter</span><span class="p">(</span><span class="s2">"gform_pre_submission_filter_4"</span><span class="p">,</span> <span class="s2">"checkbox"</span><span class="p">);</span>
+
+<span class="k">function</span> <span class="nf">checkbox</span><span class="p">(</span><span class="nv">$form</span><span class="p">){</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="nv">$form</span><span class="p">[</span><span class="s1">'fields'</span><span class="p">]</span> <span class="k">as</span> <span class="o">&amp;</span><span class="nv">$field</span><span class="p">){</span>
+
+        <span class="c1">//NOTE: replace 30 with your radio box field id</span>
+        <span class="nv">$field_id</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$field</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">!=</span> <span class="nv">$field_id</span><span class="p">)</span>
+            <span class="k">continue</span><span class="p">;</span>
+
+    <span class="k">require</span><span class="p">(</span><span class="s1">'radio_products.php'</span><span class="p">);</span>
+
+    <span class="nv">$product</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">'pname'</span><span class="p">]);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nv">$i</span> <span class="o">&lt;=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$products</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$index</span> <span class="o">=</span> <span class="nv">$i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$product</span> <span class="o">==</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$index</span><span class="p">][</span><span class="s1">'pname'</span><span class="p">]){</span>
+            <span class="nv">$arr_index</span> <span class="o">=</span> <span class="nv">$index</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nv">$i</span> <span class="o">=</span> <span class="nv">$arr_index</span><span class="p">;</span>
+    <span class="nv">$select</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$choices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value'</span><span class="p">],</span> <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value'</span><span class="p">]);</span>
+        <span class="nv">$choices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'price'</span><span class="p">],</span> <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'price'</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">else</span><span class="p">{</span>
+        <span class="nv">$choices</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value1'</span><span class="p">],</span> <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'value1'</span><span class="p">],</span> <span class="s1">'isSelected'</span> <span class="o">=&gt;</span> <span class="nv">$select</span><span class="p">);</span>
+        <span class="nv">$choices</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'price2'</span><span class="p">],</span> <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">[</span><span class="nv">$i</span><span class="p">][</span><span class="s1">'price2'</span><span class="p">],</span> <span class="s1">'isSelected'</span> <span class="o">=&gt;</span> <span class="nv">$select</span><span class="p">);</span>
+    <span class="p">}</span>
+
+        <span class="nv">$field</span><span class="p">[</span><span class="s1">'choices'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$choices</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$form</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Notice here at <code>isSelected =&gt; $select</code> , this will select the default value you want to select automatically. </p>
+
+<h3>
+<a name="php-product-file" class="anchor" href="#php-product-file"><span class="octicon octicon-link"></span></a>PHP PRODUCT FILE</h3>
+
+<p><strong>(Filename - radio_products.php)</strong></p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span> 
+                <span class="k">array</span><span class="p">(</span> 
+                    <span class="s1">'pname'</span>  <span class="o">=&gt;</span> <span class="s2">"impulso"</span><span class="p">,</span> 
+          <span class="s1">'text1'</span>  <span class="o">=&gt;</span> <span class="s1">'3 Payments of each 97,00 &amp;euro;. Just 1 Payment Today, 1 Payment in 30 Days, and 1 Payment In 60 Days'</span><span class="p">,</span>
+          <span class="s1">'text2'</span>  <span class="o">=&gt;</span> <span class="s1">'DISCOUNT: One Payment of 247,00 &amp;euro;, Pay in full today and save 44,00 &amp;euro; instantly!'</span><span class="p">,</span>
+          <span class="s1">'value1'</span> <span class="o">=&gt;</span> <span class="s1">'3x'</span><span class="p">,</span>
+          <span class="s1">'value2'</span> <span class="o">=&gt;</span> <span class="s1">'1x'</span><span class="p">,</span>
+          <span class="s1">'price1'</span> <span class="o">=&gt;</span> <span class="mi">97</span><span class="p">,</span>
+          <span class="s1">'price2'</span> <span class="o">=&gt;</span> <span class="mi">247</span>
+        <span class="p">),</span>
+        <span class="k">array</span><span class="p">(</span> 
+          <span class="s1">'pname'</span>  <span class="o">=&gt;</span> <span class="s2">"academia"</span><span class="p">,</span> 
+          <span class="s1">'text1'</span>  <span class="o">=&gt;</span> <span class="s1">'Academia 6'</span><span class="p">,</span>
+          <span class="s1">'text2'</span>  <span class="o">=&gt;</span> <span class="s1">'Academia 1'</span><span class="p">,</span>
+          <span class="s1">'value1'</span> <span class="o">=&gt;</span> <span class="s1">'6x'</span><span class="p">,</span>
+          <span class="s1">'value2'</span> <span class="o">=&gt;</span> <span class="s1">'1x'</span><span class="p">,</span>
+          <span class="s1">'price1'</span> <span class="o">=&gt;</span> <span class="mi">97</span><span class="p">,</span>
+          <span class="s1">'price2'</span> <span class="o">=&gt;</span> <span class="mi">247</span>
+        <span class="p">),</span>
+        <span class="k">array</span><span class="p">(</span>
+          <span class="s1">'pname'</span>  <span class="o">=&gt;</span> <span class="s1">'sample'</span><span class="p">,</span>
+          <span class="s1">'text'</span>   <span class="o">=&gt;</span> <span class="s1">'This is a sample test product for 1xThis is a sample test product for 1xThis is a sample test product for 1x'</span><span class="p">,</span>
+          <span class="s1">'value'</span>  <span class="o">=&gt;</span> <span class="s1">'1x'</span><span class="p">,</span>
+          <span class="s1">'price'</span>  <span class="o">=&gt;</span> <span class="mi">24</span>
+        <span class="p">)</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<h2>
+<a name="file-for-thank-you-page-redirection-json-style-filename---productjs" class="anchor" href="#file-for-thank-you-page-redirection-json-style-filename---productjs"><span class="octicon octicon-link"></span></a>File for Thank you page redirection JSON Style (Filename - product.js)</h2>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">impulso</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"p_name"</span> <span class="o">:</span> <span class="s2">"impulso"</span><span class="p">,</span>
+    <span class="s2">"easypay"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"t_url"</span><span class="o">:</span><span class="s2">"https://checkout.shoo.pt/impulso/mb-confirmacao/"</span>
+    <span class="p">},</span>
+    <span class="s2">"paypal"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"t_url"</span><span class="o">:</span><span class="s2">"https://checkout.shoo.pt/impulso/cc-confirmacao/"</span>
+    <span class="p">},</span>
+    <span class="s2">"dbt"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"t_url"</span><span class="o">:</span><span class="s2">"https://checkout.shoo.pt/impulso/transferencia-confirmacao/"</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">academia</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"p_name"</span> <span class="o">:</span> <span class="s2">"academia"</span><span class="p">,</span>
+    <span class="s2">"easypay"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"t_url"</span><span class="o">:</span><span class="s2">"https://checkout.shoo.pt/payment-gateway/"</span>
+    <span class="p">},</span>
+    <span class="s2">"paypal"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"t_url"</span><span class="o">:</span><span class="s2">"https://checkout.shoo.pt/payment-gateway/"</span>
+    <span class="p">},</span>
+    <span class="s2">"dbt"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"t_url"</span><span class="o">:</span><span class="s2">"https://checkout.shoo.pt/payment-gateway/"</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+<h3>
+<a name="file-for-accessing-and-processing-these-values-filename-processjs" class="anchor" href="#file-for-accessing-and-processing-these-values-filename-processjs"><span class="octicon octicon-link"></span></a>File for accessing and processing these values (filename: process.js)</h3>
+
+<div class="highlight highlight-js"><pre><span class="c1">//Function to fectch URL parameters</span>
+<span class="kd">function</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">decodeURIComponent</span><span class="p">((</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s1">'[?|&amp;]'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">'='</span> <span class="o">+</span> <span class="s1">'([^&amp;;]+?)(&amp;|#|;|$)'</span><span class="p">).</span><span class="nx">exec</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span><span class="o">||</span><span class="p">[,</span><span class="s2">""</span><span class="p">])[</span><span class="mi">1</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\+/g</span><span class="p">,</span> <span class="s1">'%20'</span><span class="p">))</span><span class="o">||</span><span class="kc">null</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">item_name</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'item_name'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">mode</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'mode'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">modex</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'modex'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'value'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fname</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'fname'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">lname</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'lname'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">e_reff</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'e_reff'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">email</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'email'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ep_entity</span> <span class="o">=</span> <span class="nx">getURLParameter</span><span class="p">(</span><span class="s1">'ep_entity'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">product</span> <span class="o">=</span> <span class="nx">item_name</span><span class="o">+</span><span class="s2">".p_name"</span><span class="p">;</span>
+
+<span class="c1">//Evaluating string as an object</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">item_name</span> <span class="o">==</span> <span class="nb">eval</span><span class="p">(</span><span class="nx">product</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">item_name</span><span class="o">+</span><span class="s2">"."</span><span class="o">+</span><span class="nx">mode</span><span class="o">+</span><span class="s2">".t_url"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">mode</span> <span class="o">==</span> <span class="s2">"easypay"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">r_url</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="o">+</span><span class="s2">"?fname="</span><span class="o">+</span><span class="nx">fname</span><span class="o">+</span><span class="s2">"&amp;e_reff="</span><span class="o">+</span><span class="nx">e_reff</span><span class="o">+</span><span class="s2">"&amp;ep_entity="</span><span class="o">+</span><span class="nx">ep_entity</span><span class="o">+</span><span class="s2">"&amp;modex="</span><span class="o">+</span><span class="nx">modex</span><span class="o">+</span><span class="s2">"&amp;value="</span><span class="o">+</span><span class="nx">value</span><span class="o">+</span><span class="s2">"&amp;email="</span><span class="o">+</span><span class="nx">email</span><span class="p">;</span>
+        <span class="c1">//redirecting the window to new url</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s2">""</span><span class="o">+</span><span class="nx">r_url</span><span class="o">+</span><span class="s2">""</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">r_url</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="o">+</span><span class="s2">"?fname="</span><span class="o">+</span><span class="nx">fname</span><span class="o">+</span><span class="s2">"&amp;modex="</span><span class="o">+</span><span class="nx">modex</span><span class="o">+</span><span class="s2">"&amp;value="</span><span class="o">+</span><span class="nx">value</span><span class="o">+</span><span class="s2">"&amp;email="</span><span class="o">+</span><span class="nx">email</span><span class="p">;</span>
+        <span class="c1">//redirecting the window to new url</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s2">""</span><span class="o">+</span><span class="nx">r_url</span><span class="o">+</span><span class="s2">""</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="description-of-all-other-files" class="anchor" href="#description-of-all-other-files"><span class="octicon octicon-link"></span></a>Description of all other files</h2>
+
+<h4>
+<a name="easypay-1" class="anchor" href="#easypay-1"><span class="octicon octicon-link"></span></a>EasyPay</h4>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/EasypayCreatePaymentReferenceExample.php">EasypayCreatePaymentReferenceExample.php</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/EasypayPaymentNotificationExample.php">EasypayPaymentNotificationExample.php</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/EasypayRequestPaymentExample.php">EasypayRequestPaymentExample.php</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/EasypayTransactionVerificationExample.php">EasypayTransactionVerificationExample.php</a></li>
+<li>API
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/api/Easypay.php">Easypay.php</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/api/Easypay-config.php">Easypay-config.php</a></li>
+</ol>
+</li>
+</ol><h4>
+<a name="getresponse-1" class="anchor" href="#getresponse-1"><span class="octicon octicon-link"></span></a>GetResponse</h4>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/jsonRPCClient.php">jsonRPCClient.php</a></li>
+</ol><h4>
+<a name="mailjet-1" class="anchor" href="#mailjet-1"><span class="octicon octicon-link"></span></a>Mailjet</h4>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/mailjet_mail.php">mailjet_mail.php</a></li>
+</ol><h4>
+<a name="gravity-form" class="anchor" href="#gravity-form"><span class="octicon octicon-link"></span></a>Gravity Form</h4>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/wp-content/themes/optimizePressTheme/functions.php">function.php</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/wp-content/themes/optimizePressTheme/radio_products.php">radio_products.php</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/wp-content/plugins/gravityforms/css/formsmain.css">formsmain.css</a></li>
+</ol><h4>
+<a name="error-log" class="anchor" href="#error-log"><span class="octicon octicon-link"></span></a>Error Log</h4>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/error_log">error_log</a></li>
+</ol><h4>
+<a name="thank-you-page-processing" class="anchor" href="#thank-you-page-processing"><span class="octicon octicon-link"></span></a>Thank you page processing</h4>
+
+<ol>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/process.html">process.html</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/process.js">process.js</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/product.js">product.js</a></li>
+<li><a href="https://github.com/Dev-Dipesh/Project-Checkout.Shoo/blob/master/php_easypay/spiffygif.gif">spiffygif.gif</a></li>
+</ol>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/Dev-Dipesh/checkout.shoo/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/Dev-Dipesh/checkout.shoo/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/Dev-Dipesh/checkout.shoo"></a> is maintained by <a href="https://github.com/Dev-Dipesh">Dev-Dipesh</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
